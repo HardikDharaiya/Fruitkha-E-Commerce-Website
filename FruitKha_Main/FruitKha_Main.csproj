@@ -1,0 +1,478 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{181E0873-8B35-4283-B307-593225A4D35E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FruitKha_Main</RootNamespace>
+    <AssemblyName>FruitKha_Main</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include="about.aspx" />
+    <Content Include="admin\admin.aspx" />
+    <Content Include="admin\AdminInfo.aspx" />
+    <Content Include="admin\Login.aspx" />
+    <Content Include="admin\Logout.aspx" />
+    <Content Include="admin\Register.aspx" />
+    <Content Include="App_Data\FruitKhaDatabase.mdf" />
+    <Content Include="App_Data\FruitKhaDatabase_log.ldf">
+      <DependentUpon>FruitKhaDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="assets\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="assets\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\css\all.min.css" />
+    <Content Include="assets\css\animate.css" />
+    <Content Include="assets\css\magnific-popup.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\meanmenu.min.css" />
+    <Content Include="assets\css\owl.carousel.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\css\scss\pages\_404.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\1.jpg" />
+    <Content Include="assets\img\a.jpg" />
+    <Content Include="assets\img\abt.jpg" />
+    <Content Include="assets\img\avaters\avatar1.png" />
+    <Content Include="assets\img\avaters\avatar2.png" />
+    <Content Include="assets\img\avaters\avatar3.png" />
+    <Content Include="assets\img\breadcrumb-bg.jpg" />
+    <Content Include="assets\img\company-logos\1.png" />
+    <Content Include="assets\img\company-logos\2.png" />
+    <Content Include="assets\img\company-logos\3.png" />
+    <Content Include="assets\img\company-logos\4.png" />
+    <Content Include="assets\img\company-logos\5.png" />
+    <Content Include="assets\img\dd.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\feature-bg.jpg" />
+    <Content Include="assets\img\hero-bg-2.jpg" />
+    <Content Include="assets\img\hero-bg-3.jpg" />
+    <Content Include="assets\img\hero-bg.jpg" />
+    <Content Include="assets\img\homepage-bg-pattern.png" />
+    <Content Include="assets\img\latest-news\news-bg-1.jpg" />
+    <Content Include="assets\img\latest-news\news-bg-2.jpg" />
+    <Content Include="assets\img\latest-news\news-bg-3.jpg" />
+    <Content Include="assets\img\latest-news\news-bg-4.jpg" />
+    <Content Include="assets\img\latest-news\news-bg-5.jpg" />
+    <Content Include="assets\img\latest-news\news-bg-6.jpg" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\products\product-img-1.jpg" />
+    <Content Include="assets\img\products\product-img-2.jpg" />
+    <Content Include="assets\img\products\product-img-3.jpg" />
+    <Content Include="assets\img\products\product-img-4.jpg" />
+    <Content Include="assets\img\products\product-img-5.jpg" />
+    <Content Include="assets\img\products\product-img-6.jpg" />
+    <Content Include="assets\img\team\team-1.jpg" />
+    <Content Include="assets\img\team\team-2.jpg" />
+    <Content Include="assets\img\team\team-3.jpg" />
+    <Content Include="assets\js\form-validate.js" />
+    <Content Include="assets\js\jquery-1.11.3.min.js" />
+    <Content Include="assets\js\jquery.countdown.js" />
+    <Content Include="assets\js\jquery.isotope-3.0.6.min.js" />
+    <Content Include="assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="assets\js\jquery.meanmenu.min.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\owl.carousel.min.js" />
+    <Content Include="assets\js\sticker.js" />
+    <Content Include="assets\js\waypoints.js" />
+    <Content Include="assets\webfonts\fa-brands-400.svg" />
+    <Content Include="assets\webfonts\fa-regular-400.svg" />
+    <Content Include="assets\webfonts\fa-solid-900.svg" />
+    <Content Include="cart.aspx" />
+    <Content Include="cart.html" />
+    <Content Include="checkout.aspx" />
+    <Content Include="checkout.html" />
+    <Content Include="contact.aspx" />
+    <Content Include="help-documentation\css\et-line-font\et-line-font.css" />
+    <Content Include="help-documentation\css\et-line-font\fonts\et-line.svg" />
+    <Content Include="help-documentation\css\font-awesome\css\font-awesome.css" />
+    <Content Include="help-documentation\css\font-awesome\css\font-awesome.min.css" />
+    <Content Include="help-documentation\css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="help-documentation\css\main.css" />
+    <Content Include="help-documentation\css\responsive-leyouts.css" />
+    <Content Include="help-documentation\images\favicon.png" />
+    <Content Include="help-documentation\IMD-License.txt" />
+    <Content Include="help-documentation\index.html" />
+    <Content Include="help-documentation\js\jhighlight\jquery.highlight.css" />
+    <Content Include="help-documentation\js\jhighlight\jquery.highlight.js" />
+    <Content Include="help-documentation\js\pagescroll\animatescroll.js" />
+    <Content Include="help-documentation\js\pagescroll\animatescroll.min.js" />
+    <Content Include="help-documentation\js\pagescroll\animatescroll.noeasing.js" />
+    <Content Include="help-documentation\js\pagescroll\custom.css" />
+    <Content Include="help-documentation\js\pagescroll\jquery-1.8.3.min.js" />
+    <Content Include="help-documentation\js\universal\jquery.js" />
+    <Content Include="Index.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="register.aspx" />
+    <Content Include="shop.aspx" />
+    <Content Include="single-product.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="about.aspx.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="about.aspx.designer.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="about.Master.cs">
+      <DependentUpon>about.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="about.Master.designer.cs">
+      <DependentUpon>about.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\AdminBLL.cs" />
+    <Compile Include="admin\AdminInfo.aspx.cs">
+      <DependentUpon>AdminInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AdminInfo.aspx.designer.cs">
+      <DependentUpon>AdminInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cart.Master.cs">
+      <DependentUpon>cart.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.Master.designer.cs">
+      <DependentUpon>cart.Master</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.Master.cs">
+      <DependentUpon>checkout.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkout.Master.designer.cs">
+      <DependentUpon>checkout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="contact.aspx.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="contact.aspx.designer.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="contact.Master.cs">
+      <DependentUpon>contact.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="contact.Master.designer.cs">
+      <DependentUpon>contact.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.Master.cs">
+      <DependentUpon>Index.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.Master.designer.cs">
+      <DependentUpon>Index.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shop.aspx.cs">
+      <DependentUpon>shop.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shop.aspx.designer.cs">
+      <DependentUpon>shop.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shop.Master.cs">
+      <DependentUpon>shop.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shop.Master.designer.cs">
+      <DependentUpon>shop.Master</DependentUpon>
+    </Compile>
+    <Compile Include="single-product.aspx.cs">
+      <DependentUpon>single-product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="single-product.aspx.designer.cs">
+      <DependentUpon>single-product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="single-product.Master.cs">
+      <DependentUpon>single-product.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="single-product.Master.designer.cs">
+      <DependentUpon>single-product.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Index.Master" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap.css.map" />
+    <Content Include="assets\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="assets\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="assets\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="assets\bootstrap\js\bootstrap.js.map" />
+    <Content Include="assets\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="assets\css\scss\base\_mixins.scss" />
+    <Content Include="assets\css\scss\base\_typography.scss" />
+    <Content Include="assets\css\scss\base\_variables.scss" />
+    <Content Include="assets\css\scss\common\_common.scss" />
+    <Content Include="assets\css\scss\common\_footer.scss" />
+    <Content Include="assets\css\scss\common\_header.scss" />
+    <Content Include="assets\css\scss\common\_hover.scss" />
+    <Content Include="assets\css\scss\main.scss" />
+    <Content Include="assets\css\scss\pages\_404.scss" />
+    <Content Include="assets\css\scss\pages\_about.scss" />
+    <Content Include="assets\css\scss\pages\_contact.scss" />
+    <Content Include="assets\css\scss\pages\_shop.scss" />
+    <Content Include="assets\css\scss\prepros-6.config" />
+    <Content Include="assets\css\scss\sections\_about.scss" />
+    <Content Include="assets\css\scss\sections\_cart-banner.scss" />
+    <Content Include="assets\css\scss\sections\_hero.scss" />
+    <Content Include="assets\css\scss\sections\_list.scss" />
+    <Content Include="assets\css\scss\sections\_news.scss" />
+    <Content Include="assets\css\scss\sections\_shop-banner.scss" />
+    <Content Include="assets\css\scss\sections\_testimonials.scss" />
+    <Content Include="assets\webfonts\fa-brands-400.eot" />
+    <Content Include="assets\webfonts\fa-brands-400.eot_" />
+    <Content Include="assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="assets\webfonts\fa-brands-400.woff" />
+    <Content Include="assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="assets\webfonts\fa-regular-400.eot" />
+    <Content Include="assets\webfonts\fa-regular-400.eot_" />
+    <Content Include="assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="assets\webfonts\fa-regular-400.woff" />
+    <Content Include="assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="assets\webfonts\fa-solid-900.eot" />
+    <Content Include="assets\webfonts\fa-solid-900.eot_" />
+    <Content Include="assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="assets\webfonts\fa-solid-900.woff" />
+    <Content Include="assets\webfonts\fa-solid-900.woff2" />
+    <Content Include="help-documentation\css\et-line-font\fonts\.DS_Store" />
+    <Content Include="help-documentation\css\et-line-font\fonts\et-line.eot" />
+    <Content Include="help-documentation\css\et-line-font\fonts\et-line.ttf" />
+    <Content Include="help-documentation\css\et-line-font\fonts\et-line.woff" />
+    <Content Include="help-documentation\css\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="help-documentation\css\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="help-documentation\css\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="help-documentation\css\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="help-documentation\css\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="help-documentation\css\font-awesome\less\animated.less" />
+    <Content Include="help-documentation\css\font-awesome\less\bordered-pulled.less" />
+    <Content Include="help-documentation\css\font-awesome\less\core.less" />
+    <Content Include="help-documentation\css\font-awesome\less\fixed-width.less" />
+    <Content Include="help-documentation\css\font-awesome\less\font-awesome.less" />
+    <Content Include="help-documentation\css\font-awesome\less\icons.less" />
+    <Content Include="help-documentation\css\font-awesome\less\larger.less" />
+    <Content Include="help-documentation\css\font-awesome\less\list.less" />
+    <Content Include="help-documentation\css\font-awesome\less\mixins.less" />
+    <Content Include="help-documentation\css\font-awesome\less\path.less" />
+    <Content Include="help-documentation\css\font-awesome\less\rotated-flipped.less" />
+    <Content Include="help-documentation\css\font-awesome\less\stacked.less" />
+    <Content Include="help-documentation\css\font-awesome\less\variables.less" />
+    <Content Include="help-documentation\css\font-awesome\scss\font-awesome.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_animated.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_core.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_icons.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_larger.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_list.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_mixins.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_path.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_stacked.scss" />
+    <Content Include="help-documentation\css\font-awesome\scss\_variables.scss" />
+    <Content Include="contact.Master" />
+    <Content Include="admin\admin.Master" />
+    <Content Include="about.Master" />
+    <Content Include="cart.Master" />
+    <Content Include="checkout.Master" />
+    <None Include="packages.config" />
+    <Content Include="shop.Master" />
+    <Content Include="single-product.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54332</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44395/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

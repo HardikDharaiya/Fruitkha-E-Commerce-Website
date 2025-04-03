@@ -1,0 +1,220 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="FruitKha_Main.admin.admin" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Bootstrap4 Shop Template">
+    <title>Admin Panel</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="/assets/css/all.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+    <style>
+        /* Navbar & Layout Fixes */
+        body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .top-header-area {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #09182f;
+        }
+
+        .container-fluid {
+            margin-top: 80px;
+        }
+
+        /* Mobile Menu Fix */
+        .mobile-menu {
+            display: none;
+        }
+
+        @media only screen and (max-width: 991px) {
+            .mobile-menu {
+                display: block;
+            }
+        }
+
+        /* Profile Dropdown */
+        .profile-menu {
+            position: relative;
+        }
+
+        .profile-menu .sub-menu {
+            position: absolute;
+            background-color: #fff;
+            width: 220px;
+            padding: 15px;
+            margin: 0;
+            left: 0;
+            top: 50px;
+            border-radius: 3px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #555555;
+        }
+
+        .profile-menu:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .profile-menu .sub-menu li {
+            display: block;
+            text-align: left;
+        }
+
+        .profile-menu .sub-menu li a {
+            color: #555;
+            font-weight: 600;
+            padding: 7px 10px;
+            font-size: 13px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .profile-menu .sub-menu li:hover a {
+            color: #F28123 !important;
+        }
+
+        /* Ensure Navbar is Fixed and Doesn't Overlap Content */
+.top-header-area {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #09182f; /* Dark Background */
+}
+
+/* Push Content Below Fixed Navbar */
+.container-fluid {
+    margin-top: 80px; /* Prevent Overlapping */
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <!-- PreLoader -->
+                <div class="loader">
+                    <div class="loader-inner">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <!-- PreLoader Ends -->
+
+                <!-- Header -->
+                <div class="top-header-area" id="sticker">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 text-center">
+                                <div class="main-menu-wrap">
+                                    <!-- Logo -->
+                                    <div class="site-logo">
+                                        <a href="admin.aspx">
+                                            <img src="/assets/img/logo.png" alt="">
+                                        </a>
+                                    </div>
+
+                                    <!-- Menu Start -->
+                                    <nav class="main-menu">
+                                        <ul>
+                                            <li class="current-list-item"><a href="Admin.aspx">Dashboard</a></li>
+                                            <li><a href="Item.aspx">Item</a></li>
+                                            <li><a href="Order.aspx">Order</a></li>
+                                            <li><a href="Users.aspx">Users</a></li>
+                                            <li class="profile-menu">
+                                                <a href="#"><i class="fas fa-user"></i></a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="AdminInfo.aspx">Profile</a></li>
+                                                    <li><a href="Logout.aspx">Logout</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <div class="mobile-menu"></div>
+                                    <!-- Menu End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Header -->
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <!-- JavaScript Libraries -->
+    <script src="/assets/js/jquery-1.11.3.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.countdown.js"></script>
+    <script src="/assets/js/jquery.isotope-3.0.6.min.js"></script>
+    <script src="assets/js/waypoints.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.min.js"></script>
+    <script src="/assets/js/sticker.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            /* Activate Mean Menu for Mobile */
+            $('nav.main-menu').meanmenu({
+                meanScreenWidth: "991"
+            });
+
+            /* Toggle Profile Dropdown */
+            $(".profile-menu > a").click(function (event) {
+                event.preventDefault();
+                $(this).siblings(".sub-menu").toggle();
+            });
+
+            /* Close Dropdown When Click Outside */
+            $(document).click(function (e) {
+                if (!$(e.target).closest('.profile-menu').length) {
+                    $(".sub-menu").hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
