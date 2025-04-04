@@ -32,8 +32,8 @@
 							<p class="subtitle">Fresh & Organic</p>
 							<h1>Delicious Seasonal Fruits</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Fruit Collection</a>
-								<a href="contact.html" class="bordered-btn">Contact Us</a>
+								<a href="shop.aspx" class="boxed-btn">Fruit Collection</a>
+								<a href="contact.aspx" class="bordered-btn">Contact Us</a>
 							</div>
 						</div>
 					</div>
@@ -118,7 +118,9 @@
                             <br />
                             <p>
                             </p>
-                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.html"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' OnCommand="Button1_Command"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <p>
+                            </p>
                         </p>
                     </div>
                           
@@ -179,7 +181,7 @@
                     <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
                     <!--Countdown Timer-->
                     <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
-                	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                	<a href="cart.aspx" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -246,7 +248,7 @@
                             Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem.</p>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
-                        <a href="about.html" class="boxed-btn mt-4">know more</a>
+                        <a href="about.aspx" class="boxed-btn mt-4">know more</a>
                     </div>
                 </div>
             </div>
@@ -262,7 +264,7 @@
             <div class="sale-percent">
                 <span>Sale!
                 <br>Upto</span>50% <span>off</span></div>
-            <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+            <a href="shop.aspx" class="cart-btn btn-lg">Shop Now</a>
         </div>
     </section>
 	<!-- end shop banner -->--%>
@@ -282,59 +284,59 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-news">
-                        <a href="single-news.html">
+                        <a href="single-news.aspx">
                         <div class="latest-news-bg news-bg-1">
                         </div>
                         </a>
                         <div class="news-text-box">
-                            <h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
+                            <h3><a href="single-news.aspx">You will vainly look for fruit on it in autumn.</a></h3>
                             <p class="blog-meta">
                                 <span class="author"><i class="fas fa-user"></i>Admin</span> <span class="date"><i class="fas fa-calendar"></i>27 December, 2019</span>
                             </p>
                             <p class="excerpt">
                                 Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-                            <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                            <a href="single-news.aspx" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-news">
-                        <a href="single-news.html">
+                        <a href="single-news.aspx">
                         <div class="latest-news-bg news-bg-2">
                         </div>
                         </a>
                         <div class="news-text-box">
-                            <h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
+                            <h3><a href="single-news.aspx">A man's worth has its season, like tomato.</a></h3>
                             <p class="blog-meta">
                                 <span class="author"><i class="fas fa-user"></i>Admin</span> <span class="date"><i class="fas fa-calendar"></i>27 December, 2019</span>
                             </p>
                             <p class="excerpt">
                                 Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-                            <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                            <a href="single-news.aspx" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                     <div class="single-latest-news">
-                        <a href="single-news.html">
+                        <a href="single-news.aspx">
                         <div class="latest-news-bg news-bg-3">
                         </div>
                         </a>
                         <div class="news-text-box">
-                            <h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
+                            <h3><a href="single-news.aspx">Good thoughts bear good fresh juicy fruit.</a></h3>
                             <p class="blog-meta">
                                 <span class="author"><i class="fas fa-user"></i>Admin</span> <span class="date"><i class="fas fa-calendar"></i>27 December, 2019</span>
                             </p>
                             <p class="excerpt">
                                 Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-                            <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+                            <a href="single-news.aspx" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <a href="news.html" class="boxed-btn">More News</a>
+                    <a href="news.aspx" class="boxed-btn">More News</a>
                 </div>
             </div>
         </div>
@@ -408,7 +410,7 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
+						<form action="index.aspx">
 							<input type="email" placeholder="Email">
 							<button type="submit"><i class="fas fa-paper-plane"></i></button>
 						</form>
@@ -477,7 +479,7 @@
                                 </li>
                                 <li>
                                     <div class="header-icons">
-                                        <a class="shopping-cart" href="cart.aspx"><i class="fas fa-shopping-cart"></i></a><a id="profileLink" class="profile" href="Login.aspx" runat="server"><i class="fas fa-user"></i></a>
+                                        <a class="shopping-cart" href="cart.aspx"><i class="fas fa-shopping-cart"></i></a><a id="profileLink" class="profile" href="Profile.aspx" runat="server"><i class="fas fa-user"></i></a>
                                     </div>
                                 </li>
                             </ul>

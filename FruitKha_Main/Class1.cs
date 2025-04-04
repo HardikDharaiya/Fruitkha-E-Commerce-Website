@@ -51,13 +51,16 @@ namespace FruitKha_Main
 
 		public int LoginCheck(string un, string pw)
 		{
-			int i;
 			Connection();
-			cmd = new SqlCommand("SELECT COUNT(*) FROM RegisterTbl WHERE UserName='"+un+"' AND UserPassword='"+pw+"';", con);
-			i = Convert.ToInt32(cmd.ExecuteScalar());
+			cmd = new SqlCommand("SELECT Uid FROM RegisterTbl WHERE UserName=@Username AND UserPassword=@Password;", con);
+			cmd.Parameters.AddWithValue("@Username", un);
+			cmd.Parameters.AddWithValue("@Password", pw);
 
-			return i;
+			object result = cmd.ExecuteScalar();
+			return result != null ? Convert.ToInt32(result) : 0;
 		}
+
+
 
 
 		public void InsertData(String nm, String gn, String hb1, String hb2, String hb3, String ct, String ad, String im)
@@ -203,6 +206,106 @@ namespace FruitKha_Main
 				SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM ItemTbl;", con);
 				return Convert.ToInt32(cmd.ExecuteScalar());
 			}
+		}
+
+		public DataTable GetUserProfile(int uid)
+		{
+			using (SqlConnection con = GetConnection())
+			{
+				string query = "SELECT UserName, UserEmail FROM RegisterTbl WHERE Uid = @Uid";
+				SqlCommand cmd = new SqlCommand(query, con);
+				cmd.Parameters.AddWithValue("@Uid", uid);
+
+				SqlDataAdapter da = new SqlDataAdapter(cmd);
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				return dt;
+			}
+		}
+
+		public DataTable GetUserOrders(int uid)
+		{
+			using (SqlConnection con = GetConnection())
+			{
+				string query = "SELECT OrderID, TotalPrice, OrderDate, Status FROM OrderTbl WHERE Uid = @Uid";
+				SqlCommand cmd = new SqlCommand(query, con);
+				cmd.Parameters.AddWithValue("@Uid", uid);
+
+				SqlDataAdapter da = new SqlDataAdapter(cmd);
+				DataTable dt = new DataTable();
+				da.Fill(dt);
+				return dt;
+			}
+		}
+
+
+		public void AddToCart(int uid, int itemId, int quantity, decimal totalPrice)
+		{
+			Connection();
+			cmd = new SqlCommand("INSERT INTO AddToCartTbl (Uid, ItemID, Quantity, TotalPrice, DateAdded) VALUES (@Uid, @ItemID, @Quantity, @TotalPrice, GETDATE())", con);
+			cmd.Parameters.AddWithValue("@Uid", uid);
+			cmd.Parameters.AddWithValue("@ItemID", itemId);
+			cmd.Parameters.AddWithValue("@Quantity", quantity);
+			cmd.Parameters.AddWithValue("@TotalPrice", totalPrice);
+			cmd.ExecuteNonQuery();
+			con.Close();
+		}
+
+
+		public DataTable GetCartItems(int uid)
+		{
+			Connection();
+			string query = "SELECT c.CartID, i.ItemName, i.ItemMeasurement, i.ItemPrice, c.Quantity, c.TotalPrice FROM AddToCartTbl c INNER JOIN ItemTbl i ON c.ItemID = i.ItemID WHERE c.Uid = @Uid";
+			cmd = new SqlCommand(query, con);
+			cmd.Parameters.AddWithValue("@Uid", uid);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			con.Close();
+			return dt;
+		}
+
+		//public DataTable GetCartItems(int uid)
+		//{
+		//	Connection();
+		//	string query = "SELECT c.CartID, i.ItemName, i.ItemMeasurement, i.ItemPrice, i.ItemImage, c.Quantity, c.TotalPrice " +
+		//				   "FROM AddToCartTbl c " +
+		//				   "INNER JOIN ItemTbl i ON c.ItemID = i.ItemID " +
+		//				   "WHERE c.Uid = @Uid";
+		//	cmd = new SqlCommand(query, con);
+		//	cmd.Parameters.AddWithValue("@Uid", uid);
+		//	SqlDataAdapter da = new SqlDataAdapter(cmd);
+		//	DataTable dt = new DataTable();
+		//	da.Fill(dt);
+		//	con.Close();
+		//	return dt;
+		//}
+
+
+
+		public void RemoveCartItem(int cartID)
+		{
+			Connection();
+			cmd = new SqlCommand("DELETE FROM AddToCartTbl WHERE CartID = @CartID", con);
+			cmd.Parameters.AddWithValue("@CartID", cartID);
+			cmd.ExecuteNonQuery();
+			con.Close();
+		}
+
+
+		public void PlaceOrder(int uid)
+		{
+			Connection();
+			string query = "INSERT INTO OrderTbl (Uid, ItemID, Quantity, TotalPrice, OrderDate, Status) SELECT Uid, ItemID, Quantity, TotalPrice, GETDATE(), 'Pending' FROM AddToCartTbl WHERE Uid = @Uid";
+			cmd = new SqlCommand(query, con);
+			cmd.Parameters.AddWithValue("@Uid", uid);
+			cmd.ExecuteNonQuery();
+
+			// Clear cart after placing order
+			cmd = new SqlCommand("DELETE FROM AddToCartTbl WHERE Uid = @Uid", con);
+			cmd.Parameters.AddWithValue("@Uid", uid);
+			cmd.ExecuteNonQuery();
+			con.Close();
 		}
 
 

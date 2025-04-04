@@ -21,23 +21,22 @@ namespace FruitKha_Main
 
 		protected void btnLogin_Click(object sender, EventArgs e)
 		{
-            int i;
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
             cs = new Class1();
-            i = cs.LoginCheck(username, password);
-                       
-            if (i>0)
+            int userID = cs.LoginCheck(username, password);
+
+            if (userID > 0)
             {
                 Session["UserLoggedIn"] = true;
-                Session["Username"] = username;
+                Session["Uid"] = userID; // Store the Uid in the session
 
                 if (chkRememberMe.Checked)
                 {
                     HttpCookie userCookie = new HttpCookie("UserLogin");
-                    userCookie["Username"] = username;
-                    userCookie.Expires = DateTime.Now.AddDays(7); // Remember for 7 days
+                    userCookie["Uid"] = userID.ToString();
+                    userCookie.Expires = DateTime.Now.AddDays(7);
                     Response.Cookies.Add(userCookie);
                 }
 

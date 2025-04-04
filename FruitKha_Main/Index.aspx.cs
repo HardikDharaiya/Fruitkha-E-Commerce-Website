@@ -42,9 +42,33 @@ namespace FruitKha_Main
 
 		int i, row;
 
+		protected void Button1_Command(object sender, CommandEventArgs e)
+		{
+			int uid = Convert.ToInt32(Session["Uid"]); // Get logged-in user ID
+			int itemId = Convert.ToInt32(e.CommandArgument); // Get ItemID from CommandArgument
+			int quantity = 1; // Default quantity for now
 
-	
-		
+			// Get Item Price from DB
+			Class1 c1 = new Class1();
+			SqlConnection con = c1.GetConnection();
+			SqlCommand cmd = new SqlCommand("SELECT ItemPrice FROM ItemTbl WHERE ItemID=@ItemID", con);
+			cmd.Parameters.AddWithValue("@ItemID", itemId);
+			object result = cmd.ExecuteScalar();
+			con.Close();
+
+			if (result != null)
+			{
+				decimal itemPrice = Convert.ToDecimal(result);
+				decimal totalPrice = itemPrice * quantity;
+
+				// Call method to insert into AddToCartTbl
+				c1.AddToCart(uid, itemId, quantity, totalPrice);
+
+				// Redirect to cart page
+				Response.Redirect("cart.aspx");
+			}
+		}
+
 		public void display()
 		{
 			c1 = new Class1();
@@ -62,9 +86,6 @@ namespace FruitKha_Main
 			pg.DataSource = ds.Tables[0].DefaultView;
 			DataList1.DataSource = pg;
 			DataList1.DataBind();
-
-
-
 
 		}
 

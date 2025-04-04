@@ -170,6 +170,7 @@
     <Content Include="help-documentation\js\universal\jquery.js" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Profile.aspx" />
     <Content Include="register.aspx" />
     <Content Include="shop.aspx" />
     <Content Include="single-product.aspx" />
@@ -299,6 +300,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="register.aspx.cs">

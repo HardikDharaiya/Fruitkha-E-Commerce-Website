@@ -1,0 +1,2 @@
+﻿INSERT INTO ItemTbl (ItemName, ItemMeasurement, ItemPrice, ItemDescription, ItemCategory, ItemImage) 
+VALUES ('Watermelon', 'Kg', 60, 'So Delicious', 'Fruit', 'Images\ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg');

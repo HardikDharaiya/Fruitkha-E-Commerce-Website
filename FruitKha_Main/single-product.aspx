@@ -70,7 +70,7 @@
                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("ItemDescription") %>'></asp:Label></p>
                         <div class="single-product-form">
                             <asp:TextBox ID="ItemQtyTxt" runat="server" TextMode="Number"></asp:TextBox>
-                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.html"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.aspx"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
                             <p>
                                 <br /><strong>Categories: </strong><asp:Label ID="Label5" runat="server" Text='<%# Eval("ItemCategory") %>'></asp:Label></p>
                         </div>
@@ -118,7 +118,7 @@
                             <br />
                             <p>
                             </p>
-                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.html"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.aspx"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
                         </p>
                     </div>
                           

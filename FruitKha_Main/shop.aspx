@@ -58,7 +58,7 @@
                             <br />
                             <p>
                             </p>
-                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.html"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.aspx"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
                             <p>
                             </p>
                         </p>
