@@ -252,26 +252,10 @@ namespace FruitKha_Main
 		}
 
 
-		public DataTable GetCartItems(int uid)
-		{
-			Connection();
-			string query = "SELECT c.CartID, i.ItemName, i.ItemMeasurement, i.ItemPrice, c.Quantity, c.TotalPrice FROM AddToCartTbl c INNER JOIN ItemTbl i ON c.ItemID = i.ItemID WHERE c.Uid = @Uid";
-			cmd = new SqlCommand(query, con);
-			cmd.Parameters.AddWithValue("@Uid", uid);
-			SqlDataAdapter da = new SqlDataAdapter(cmd);
-			DataTable dt = new DataTable();
-			da.Fill(dt);
-			con.Close();
-			return dt;
-		}
-
 		//public DataTable GetCartItems(int uid)
 		//{
 		//	Connection();
-		//	string query = "SELECT c.CartID, i.ItemName, i.ItemMeasurement, i.ItemPrice, i.ItemImage, c.Quantity, c.TotalPrice " +
-		//				   "FROM AddToCartTbl c " +
-		//				   "INNER JOIN ItemTbl i ON c.ItemID = i.ItemID " +
-		//				   "WHERE c.Uid = @Uid";
+		//	string query = "SELECT c.CartID, i.ItemName, i.ItemMeasurement, i.ItemPrice, c.Quantity, c.TotalPrice FROM AddToCartTbl c INNER JOIN ItemTbl i ON c.ItemID = i.ItemID WHERE c.Uid = @Uid";
 		//	cmd = new SqlCommand(query, con);
 		//	cmd.Parameters.AddWithValue("@Uid", uid);
 		//	SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -280,6 +264,22 @@ namespace FruitKha_Main
 		//	con.Close();
 		//	return dt;
 		//}
+
+		public DataTable GetCartItems(int uid)
+		{
+			Connection();
+			string query = "SELECT c.CartID, i.ItemName, i.ItemMeasurement, i.ItemPrice, i.ItemImage, c.Quantity, c.TotalPrice " +
+						   "FROM AddToCartTbl c " +
+						   "INNER JOIN ItemTbl i ON c.ItemID = i.ItemID " +
+						   "WHERE c.Uid = @Uid";
+			cmd = new SqlCommand(query, con);
+			cmd.Parameters.AddWithValue("@Uid", uid);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			con.Close();
+			return dt;
+		}
 
 
 

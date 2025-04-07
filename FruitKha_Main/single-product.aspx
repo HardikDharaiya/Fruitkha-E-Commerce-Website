@@ -43,7 +43,7 @@
     <div class="single-product mt-150 mb-150">
         <div class="container">
    
-    <asp:DataList ID="DataList1" runat="server">
+    <asp:DataList ID="DataList1" runat="server" OnItemCommand="DataList1_ItemCommand">
         <ItemTemplate>
 
              <!-- single product -->
@@ -69,8 +69,8 @@
                         <p>
                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("ItemDescription") %>'></asp:Label></p>
                         <div class="single-product-form">
-                            <asp:TextBox ID="ItemQtyTxt" runat="server" TextMode="Number"></asp:TextBox>
-                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.aspx"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                          <asp:TextBox ID="txtQuantity" runat="server" TextMode="Number" text="1" EnableViewState="true"/>
+                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' CommandName="AddToCart"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
                             <p>
                                 <br /><strong>Categories: </strong><asp:Label ID="Label5" runat="server" Text='<%# Eval("ItemCategory") %>'></asp:Label></p>
                         </div>

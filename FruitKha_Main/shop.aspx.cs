@@ -94,6 +94,39 @@ namespace FruitKha_Main
             Response.Redirect($"single-product.aspx?ItemID={itemId}");
         }
 
+		protected void Button1_Command(object sender, CommandEventArgs e)
+		{
+            int uid = Convert.ToInt32(Session["Uid"]);
+            int itemId = Convert.ToInt32(e.CommandArgument);
+
+            // For now, we assume quantity = 1 (you can enhance it later)
+            int quantity = 1;
+
+            // Get item price from DB
+            Class1 obj = new Class1();
+            SqlConnection con = obj.GetConnection();
+            SqlCommand cmd = new SqlCommand("SELECT ItemPrice FROM ItemTbl WHERE ItemID = @ItemID", con);
+            cmd.Parameters.AddWithValue("@ItemID", itemId);
+            object priceObj = cmd.ExecuteScalar();
+            con.Close();
+
+            if (priceObj != null)
+            {
+                decimal price = Convert.ToDecimal(priceObj);
+                decimal totalPrice = price * quantity;
+
+                // Add to Cart Table
+                obj.AddToCart(uid, itemId, quantity, totalPrice);
+
+                // Redirect to Cart
+                Response.Redirect("cart.aspx");
+            }
+            else
+            {
+                Response.Write("<script>alert('Something wrong!');</script>");
+            }
+        }
+
 		protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

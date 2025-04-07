@@ -40,77 +40,103 @@
     </div>
 	<!-- end breadcrumb section -->
 
-<%--<div class="cart-section mt-150 mb-150">
+
+
+
+<div class="cart-section mt-150 mb-150">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <h2>Your Shopping Cart</h2>
-                <div class="cart-table-wrap">
-                    <asp:GridView ID="CartGridView" runat="server" AutoGenerateColumns="False" CssClass="cart-table"
-                        DataKeyNames="CartID" OnRowDeleting="CartGridView_RowDeleting" ShowHeader="true">
-                        <HeaderStyle CssClass="cart-table-head" />
-                        <RowStyle CssClass="table-body-row" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="">
-                                <ItemTemplate>
-                                    <td class="product-remove">
-                                        <asp:LinkButton ID="btnDelete" runat="server" CommandName="Delete" CssClass="delete-icon">
-                                            <i class="far fa-window-close"></i>
-                                        </asp:LinkButton>
-                                    </td>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                <div class="cart-table-wrap" style="overflow-x: auto;">
+                   <asp:GridView ID="CartGridView" runat="server" AutoGenerateColumns="False" CssClass="cart-table"
+    DataKeyNames="CartID" OnRowDeleting="CartGridView_RowDeleting" 
+    BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" 
+    CellPadding="4" ForeColor="Black" GridLines="Horizontal"
+    style="width: 100%;">
+                       
+    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+    <HeaderStyle CssClass="cart-table-head" BackColor="#333333" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+    <RowStyle CssClass="table-body-row" />
+    <Columns>
+        <asp:TemplateField HeaderText="Remove Item">
+            <ItemTemplate>
+                <asp:LinkButton ID="btnDelete" runat="server" CommandName="Delete" CssClass="product-remove" 
+                    style="text-align:center; display:block;">
+                    <i class="far fa-window-close"></i>
+                </asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Product Image">
-                                <ItemTemplate>
-                                    <td class="product-image">
-                                        <img src='<%# ResolveUrl(Eval("ItemImage").ToString()) %>' alt="Product Image" onerror="this.onerror=null;this.src='assets/images/default.png';" />
-                                    </td>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+        <asp:TemplateField HeaderText="Product Image">
+            <ItemTemplate>
+                <img src='<%# ResolveUrl(Eval("ItemImage").ToString()) %>' 
+                     class="img-fluid rounded" 
+                     alt="Product Image" 
+                     style="max-width: 80px; max-height: 80px; display: block; margin: 0 auto;" />
+            </ItemTemplate>
+        </asp:TemplateField>
 
-                            <asp:BoundField DataField="ItemName" HeaderText="Name" ItemStyle-CssClass="product-name" />
+        <asp:BoundField DataField="ItemName" HeaderText="Name">
+            <ItemStyle CssClass="product-name" HorizontalAlign="Center" />
+        </asp:BoundField>
 
-                            <asp:BoundField DataField="ItemPrice" HeaderText="Price" DataFormatString="₹{0:N2}" ItemStyle-CssClass="product-price" />
+        <asp:BoundField DataField="ItemPrice" HeaderText="Price" DataFormatString="₹{0:N2}">
+            <ItemStyle CssClass="product-price" HorizontalAlign="Center" />
+        </asp:BoundField>
 
-                            <asp:TemplateField HeaderText="Quantity">
-                                <ItemTemplate>
-                                    <td class="product-quantity">
-                                        <asp:TextBox ID="txtQuantity" runat="server" Text='<%# Eval("Quantity") %>' CssClass="quantity-input"></asp:TextBox>
-                                    </td>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+        <asp:TemplateField HeaderText="Quantity">
+            <ItemTemplate>
+                <span class="product-quantity" style="display: block; text-align: center;"><%# Eval("Quantity") %></span>
+            </ItemTemplate>
+        </asp:TemplateField>
 
-                            <asp:BoundField DataField="TotalPrice" HeaderText="Total" DataFormatString="₹{0:N2}" ItemStyle-CssClass="product-total" />
-                        </Columns>
-                    </asp:GridView>
+        <asp:BoundField DataField="TotalPrice" HeaderText="Total" DataFormatString="₹{0:N2}">
+            <ItemStyle CssClass="product-total" HorizontalAlign="Center" />
+        </asp:BoundField>
+    </Columns>
+
+    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+    <SortedDescendingHeaderStyle BackColor="#242121" />
+</asp:GridView>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Simple row hover effect -->
+<style>
+    .table-body-row:hover {
+        background-color: #f9f9f9 !important;
+        transition: background 0.3s ease;
+    }
+</style>
+
 <div class="cart-footer">
     <table class="total-table">
         <tbody>
             <tr class="table-total-row">
-                <th>Total Amount</th>
-                <td>
-                    <asp:Label ID="lblTotalAmount" runat="server" Font-Bold="True" CssClass="total-amount"></asp:Label>
+                <th>Total Amount:</th>
+                <td class="total-amount">
+                    <asp:Label ID="lblTotalAmount" runat="server" Font-Bold="True"></asp:Label>
                 </td>
             </tr>
         </tbody>
     </table>
     <div class="cart-buttons">
-        <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="btnCheckout_Click" CssClass="checkout-btn" />
+        <asp:Button ID="btnCheckout" runat="server" Text="Proceed to Checkout" OnClick="btnCheckout_Click" CssClass="checkout-btn" />
     </div>
-</div>--%>
+</div>
 
 
 
 
-
-     <div>
+    <%-- <div>
             <h2>Your Shopping Cart</h2>
             <asp:GridView ID="CartGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="CartID" OnRowDeleting="CartGridView_RowDeleting">
                 <Columns>
@@ -130,7 +156,7 @@
             <asp:Label ID="lblTotalAmount" runat="server" Font-Bold="True"></asp:Label>
             <br />
             <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="btnCheckout_Click" />
-        </div>
+        </div>--%>
 
 
 	<!-- cart -->

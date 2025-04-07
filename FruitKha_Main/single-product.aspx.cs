@@ -25,17 +25,20 @@ namespace FruitKha_Main
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			display();
-			string tempId = Request.QueryString["ItemID"];
+			if (!IsPostBack)
+			{
+				display();
 
-			c1 = new Class1();
-			da = new SqlDataAdapter("SELECT * FROM ItemTbl WHERE ItemID='"+tempId+"';", c1.GetConnection());
+				string tempId = Request.QueryString["ItemID"];
+				c1 = new Class1();
+				da = new SqlDataAdapter("SELECT * FROM ItemTbl WHERE ItemID='" + tempId + "';", c1.GetConnection());
 
-			ds = new DataSet();
-			da.Fill(ds);
+				ds = new DataSet();
+				da.Fill(ds);
 
-			DataList1.DataSource = ds;
-			DataList1.DataBind();
+				DataList1.DataSource = ds;
+				DataList1.DataBind();
+			}
 
 
 		}
@@ -67,6 +70,63 @@ namespace FruitKha_Main
 		{
 
 		}
+
+		protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+		{
+			if (e.CommandName == "AddToCart")
+			{
+				int itemID = Convert.ToInt32(e.CommandArgument);
+
+				// Correct way to find the quantity textbox
+				TextBox txtQty = (TextBox)e.Item.FindControl("txtQuantity");
+				int quantity = 1;
+
+				if (txtQty != null && !string.IsNullOrEmpty(txtQty.Text))
+				{
+					quantity = Convert.ToInt32(txtQty.Text); // This value must be 50 if you entered it
+				}
+
+				// Get price from DB
+				decimal price = GetPriceByItemID(itemID); // You should define this method
+				decimal total = quantity * price;
+
+				c1 = new Class1();
+				SqlConnection con = c1.GetConnection();
+				string query = "INSERT INTO AddToCartTbl (Uid, ItemID, Quantity, TotalPrice, DateAdded) VALUES (@Uid, @ItemID, @Quantity, @TotalPrice, @DateAdded)";
+				SqlCommand cmd = new SqlCommand(query, con);
+				cmd.Parameters.AddWithValue("@Uid", Session["Uid"]); // assuming Uid is stored in Session
+				cmd.Parameters.AddWithValue("@ItemID", itemID);
+				cmd.Parameters.AddWithValue("@Quantity", quantity);
+				cmd.Parameters.AddWithValue("@TotalPrice", total);
+				cmd.Parameters.AddWithValue("@DateAdded", DateTime.Now);
+
+				cmd.ExecuteNonQuery();
+				con.Close();
+
+				Response.Redirect("Cart.aspx");
+			}
+		}
+
+		private decimal GetPriceByItemID(int itemID)
+		{
+			decimal price = 0;
+			c1 = new Class1();
+			SqlConnection con = c1.GetConnection();
+			string query = "SELECT ItemPrice FROM ItemTbl WHERE ItemID = @ItemID";
+			SqlCommand cmd = new SqlCommand(query, con);
+			cmd.Parameters.AddWithValue("@ItemID", itemID);
+			
+			SqlDataReader dr = cmd.ExecuteReader();
+			if (dr.Read())
+			{
+				price = Convert.ToDecimal(dr["ItemPrice"]);
+			}
+			con.Close();
+			return price;
+		}
+
+
+
 
 		protected void ImageButton1_Command(object sender, CommandEventArgs e)
 		{

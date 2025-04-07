@@ -38,6 +38,8 @@
         </div>
     </div>
 	<!-- end breadcrumb section -->
+
+
       <div class="col-lg-4 col-md-6 text-center">
           <div class="row product-lists">
     <asp:DataList ID="DataList1" runat="server" RepeatDirection="Horizontal">
@@ -58,14 +60,13 @@
                             <br />
                             <p>
                             </p>
-                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' href="cart.aspx"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <asp:LinkButton ID="Button1" runat="server" class="cart-btn" CommandArgument='<%# Eval("ItemID") %>' OnCommand="Button1_Command"><i class="fas fa-shopping-cart"></i>Add To Cart</asp:LinkButton>
+                            <p>
+                            </p>
                             <p>
                             </p>
                         </p>
-                    </div>
-              
-                    
-                          
+                    </div>                                                           
         </ItemTemplate>
                  </asp:DataList>
 
