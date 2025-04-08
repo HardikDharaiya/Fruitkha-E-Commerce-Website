@@ -96,8 +96,8 @@
 									<div class="header-icons">
 										<a class="shopping-cart" href="cart.aspx"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-										<a id="profileLink" class="profile" href="Login.aspx" runat="server"><i class="fas fa-user"></i></a>
-									</div>
+										<a id="profileLink" class="profile" href="Login.aspx" runat="server"><i class="fas fa-user"></i></a>					
+									</div>									
 								</li>
 							</ul>
 						</nav>

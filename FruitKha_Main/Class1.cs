@@ -6,6 +6,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.IO;
+using System.Text;
 
 namespace FruitKha_Main
 {
@@ -227,7 +228,14 @@ namespace FruitKha_Main
 		{
 			using (SqlConnection con = GetConnection())
 			{
-				string query = "SELECT OrderID, TotalPrice, OrderDate, Status FROM OrderTbl WHERE Uid = @Uid";
+				// This query should already be updated from the previous step
+				string query = @"SELECT
+                            o.OrderID, i.ItemName, o.Quantity, o.TotalPrice,
+                            o.OrderDate, o.Status, o.ShippingAddressID
+                        FROM OrderTbl o
+                        INNER JOIN ItemTbl i ON o.ItemID = i.ItemID
+                        WHERE o.Uid = @Uid
+                        ORDER BY o.OrderDate DESC, o.ShippingAddressID DESC"; // Order helps grouping
 				SqlCommand cmd = new SqlCommand(query, con);
 				cmd.Parameters.AddWithValue("@Uid", uid);
 
@@ -237,6 +245,7 @@ namespace FruitKha_Main
 				return dt;
 			}
 		}
+
 
 
 		public void AddToCart(int uid, int itemId, int quantity, decimal totalPrice)
@@ -293,20 +302,144 @@ namespace FruitKha_Main
 		}
 
 
-		public void PlaceOrder(int uid)
+		// New PlaceOrder accepting ShippingAddressID
+		public void PlaceOrder(int uid, int shippingAddressID)
 		{
-			Connection();
-			string query = "INSERT INTO OrderTbl (Uid, ItemID, Quantity, TotalPrice, OrderDate, Status) SELECT Uid, ItemID, Quantity, TotalPrice, GETDATE(), 'Pending' FROM AddToCartTbl WHERE Uid = @Uid";
-			cmd = new SqlCommand(query, con);
-			cmd.Parameters.AddWithValue("@Uid", uid);
-			cmd.ExecuteNonQuery();
+			using (SqlConnection con = GetConnection()) // Use using statement
+			{
+				// Use a transaction to ensure both operations succeed or fail together
+				SqlTransaction transaction = con.BeginTransaction();
 
-			// Clear cart after placing order
-			cmd = new SqlCommand("DELETE FROM AddToCartTbl WHERE Uid = @Uid", con);
-			cmd.Parameters.AddWithValue("@Uid", uid);
-			cmd.ExecuteNonQuery();
-			con.Close();
+				try
+				{
+					// 1. Insert into OrderTbl from AddToCartTbl, adding ShippingAddressID
+					string queryInsertOrder = @"INSERT INTO OrderTbl
+                                                (Uid, ItemID, Quantity, TotalPrice, OrderDate, Status, ShippingAddressID)
+                                                SELECT
+                                                    Uid, ItemID, Quantity, TotalPrice, GETDATE(), 'Pending', @ShippingAddressID
+                                                FROM AddToCartTbl
+                                                WHERE Uid = @Uid";
+
+					using (SqlCommand cmdInsert = new SqlCommand(queryInsertOrder, con, transaction)) // Associate with transaction
+					{
+						cmdInsert.Parameters.AddWithValue("@Uid", uid);
+						cmdInsert.Parameters.AddWithValue("@ShippingAddressID", shippingAddressID);
+						cmdInsert.ExecuteNonQuery();
+					}
+
+
+					// 2. Clear cart after placing order
+					string queryDeleteCart = "DELETE FROM AddToCartTbl WHERE Uid = @Uid";
+					using (SqlCommand cmdDelete = new SqlCommand(queryDeleteCart, con, transaction)) // Associate with transaction
+					{
+						cmdDelete.Parameters.AddWithValue("@Uid", uid);
+						cmdDelete.ExecuteNonQuery();
+					}
+
+					// If both commands succeeded, commit the transaction
+					transaction.Commit();
+				}
+				catch (Exception) // Catch specific SqlException if needed
+				{
+					// An error occurred, rollback the transaction
+					try
+					{
+						transaction.Rollback();
+					}
+					catch (Exception rollbackEx)
+					{
+						// Log rollback failure: Log.Error("Rollback failed: " + rollbackEx.Message);
+					}
+					// Rethrow the original exception to be handled by the calling code
+					throw;
+				}
+
+			} // Connection automatically closed by using
 		}
+		// --- END: Modify PlaceOrder Method ---
+
+
+		// --- START: New Method ---
+		public int SaveShippingAddress(int uid, string fullName, string email, string address1, string address2, string city, string state, string postalCode, string country, string phone)
+		{
+			int addressId = -1; // Default to invalid ID
+			using (SqlConnection con = GetConnection()) // Use using for proper disposal
+			{
+				string query = @"INSERT INTO ShippingAddressTbl
+                                (Uid, FullName, Email, AddressLine1, AddressLine2, City, State, PostalCode, Country, PhoneNumber, DateAdded)
+                                VALUES
+                                (@Uid, @FullName, @Email, @AddressLine1, @AddressLine2, @City, @State, @PostalCode, @Country, @PhoneNumber, GETDATE());
+                                SELECT SCOPE_IDENTITY();"; // Get the last inserted identity value
+
+				using (SqlCommand cmd = new SqlCommand(query, con))
+				{
+					cmd.Parameters.AddWithValue("@Uid", uid);
+					cmd.Parameters.AddWithValue("@FullName", fullName);
+					cmd.Parameters.AddWithValue("@Email", email);
+					cmd.Parameters.AddWithValue("@AddressLine1", address1);
+					// Handle potential NULL for AddressLine2
+					cmd.Parameters.AddWithValue("@AddressLine2", string.IsNullOrWhiteSpace(address2) ? (object)DBNull.Value : address2);
+					cmd.Parameters.AddWithValue("@City", city);
+					cmd.Parameters.AddWithValue("@State", state);
+					cmd.Parameters.AddWithValue("@PostalCode", postalCode);
+					cmd.Parameters.AddWithValue("@Country", country);
+					cmd.Parameters.AddWithValue("@PhoneNumber", phone);
+
+					object result = cmd.ExecuteScalar(); // Executes query and returns first column of first row
+					if (result != null && result != DBNull.Value)
+					{
+						addressId = Convert.ToInt32(result);
+					}
+				}
+			} // Connection is automatically closed by using statement
+			return addressId;
+		}
+		// --- END: New Method ---
+
+
+
+		public string GetShippingAddressString(int addressId)
+		{
+			string addressString = "Address not found."; // Default message
+			using (SqlConnection con = GetConnection())
+			{
+				string query = "SELECT FullName, AddressLine1, AddressLine2, City, State, PostalCode, Country, PhoneNumber FROM ShippingAddressTbl WHERE AddressID = @AddressID";
+				using (SqlCommand cmd = new SqlCommand(query, con))
+				{
+					cmd.Parameters.AddWithValue("@AddressID", addressId);
+					using (SqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							StringBuilder sb = new StringBuilder();
+							sb.Append(reader["FullName"].ToString());
+							sb.Append("<br/>"); // HTML line break for display
+							sb.Append(reader["AddressLine1"].ToString());
+							if (reader["AddressLine2"] != DBNull.Value && !string.IsNullOrWhiteSpace(reader["AddressLine2"].ToString()))
+							{
+								sb.Append(", ");
+								sb.Append(reader["AddressLine2"].ToString());
+							}
+							sb.Append("<br/>");
+							sb.Append(reader["City"].ToString());
+							sb.Append(", ");
+							sb.Append(reader["State"].ToString());
+							sb.Append(" ");
+							sb.Append(reader["PostalCode"].ToString());
+							sb.Append("<br/>");
+							sb.Append(reader["Country"].ToString());
+							sb.Append("<br/>Phone: ");
+							sb.Append(reader["PhoneNumber"].ToString());
+
+							addressString = sb.ToString();
+						}
+					}
+				}
+			}
+			return addressString;
+		}
+
+
 
 
 	}

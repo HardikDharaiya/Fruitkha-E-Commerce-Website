@@ -1836,6 +1836,8 @@ span.comment-date {
   width: 100%;
 }
 
+
+
 .sidebar-section {
   margin-left: 30px;
 }
@@ -2753,7 +2755,7 @@ tr.total-data td strong {
   border-radius: 3px;
 }
 
-.billing-address-form form p textarea {
+.billing-address-form-textarea {
   width: 100%;
   border-radius: 3px;
   border: 1px solid #ddd;

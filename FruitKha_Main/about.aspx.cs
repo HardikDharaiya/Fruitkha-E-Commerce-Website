@@ -13,7 +13,7 @@ namespace FruitKha_Main
 		
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			
+			UserNameTxt.Text = Session["UserName"].ToString();
 		}
 	}
 }

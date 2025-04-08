@@ -134,6 +134,7 @@ namespace FruitKha_Main
                 ViewState["pid"] = 0;
             }
             display();
+            UserNameTxt.Text = Session["UserName"].ToString();
         }
     }
 }

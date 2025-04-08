@@ -15,26 +15,36 @@ namespace FruitKha_Main
         Class1 c1 = new Class1();
 
 
-        private void LoadCart()
+        private void LoadCart() // Ensure LoadCart handles empty results gracefully
         {
             if (Session["Uid"] == null)
             {
-                Response.Redirect("Login.aspx");
+                // BasePage should handle redirect, but double-check
+                Response.Redirect("Login.aspx", false);
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+                return;
             }
-            else
-            {
-                int uid = Convert.ToInt32(Session["Uid"]);
-                DataTable dt = c1.GetCartItems(uid);
-                CartGridView.DataSource = dt;
-                CartGridView.DataBind();
 
-                // Calculate Total Amount
-                decimal total = 0;
+            int uid = Convert.ToInt32(Session["Uid"]);
+            DataTable dt = c1.GetCartItems(uid);
+            CartGridView.DataSource = dt;
+            CartGridView.DataBind();
+
+            // Calculate Total Amount
+            decimal total = 0;
+            if (dt != null && dt.Rows.Count > 0)
+            {
                 foreach (DataRow row in dt.Rows)
                 {
                     total += Convert.ToDecimal(row["TotalPrice"]);
                 }
                 lblTotalAmount.Text = "Total: ₹" + total.ToString("N2");
+                btnCheckout.Enabled = true; // Enable checkout button if cart has items
+            }
+            else
+            {
+                lblTotalAmount.Text = "Your cart is empty.";
+                btnCheckout.Enabled = false; // Disable checkout button if cart is empty
             }
         }
 
@@ -43,8 +53,10 @@ namespace FruitKha_Main
 			if (!IsPostBack)
 			{
 				LoadCart();
-			}
-		}
+                
+            }
+            UserNameTxt.Text = Session["UserName"].ToString();
+        }
 
 		protected void CartGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
 		{
@@ -63,8 +75,32 @@ namespace FruitKha_Main
             if (Session["Uid"] != null)
             {
                 int uid = Convert.ToInt32(Session["Uid"]);
-                c1.PlaceOrder(uid);
-                Response.Redirect("OrderConfirmation.aspx");
+
+                // --- START: Changes ---
+                // Check if the cart has items before proceeding
+                DataTable cartItems = c1.GetCartItems(uid);
+                if (cartItems != null && cartItems.Rows.Count > 0)
+                {
+                    // Redirect to the checkout page
+                    Response.Redirect("checkout.aspx", false); // Use false to stop current execution
+                    HttpContext.Current.ApplicationInstance.CompleteRequest(); // Recommended after Response.Redirect
+                }
+                else
+                {
+                    // Optionally show a message if the cart is empty
+                    // Example: ScriptManager.RegisterStartupScript(this, GetType(), "EmptyCart", "alert('Your cart is empty.');", true);
+                    // Or simply do nothing and stay on the cart page
+                    lblTotalAmount.Text = "Your cart is empty."; // Update the label
+                }
+                // --- END: Changes ---
+
+                // --- REMOVE THIS LINE ---
+                // c1.PlaceOrder(uid);
+                // --- REMOVE THIS LINE ---
+            }
+            else
+            {
+                Response.Redirect("Login.aspx"); // Should be handled by BasePage, but good failsafe
             }
         }
 	}

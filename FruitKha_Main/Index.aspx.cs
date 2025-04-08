@@ -95,7 +95,8 @@ namespace FruitKha_Main
 		}
 		protected void Page_Load(object sender, EventArgs e)
 		{		
-			display();			
+			display();
+			UserNameTxt.Text = Session["UserName"].ToString();
 		}
 	}
 }

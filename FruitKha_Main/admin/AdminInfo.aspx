@@ -3,28 +3,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
     <title>Admin Profile</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+   <%-- Link to Bootstrap CSS --%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <%-- Link to your custom CSS if you have one --%>
+     <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" />
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="/assets/css/all.min.css" />
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="/assets/css/magnific-popup.css" />
+	<!-- animate css -->
+	<link rel="stylesheet" href="/assets/css/animate.css" />
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="/assets/css/meanmenu.min.css" />
+	<!-- main style -->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!-- responsive -->
+	<link rel="stylesheet" href="/assets/css/responsive.css" />
     <style>
         body {
             background-color: #f5f5f5;
         }
-        .container {
-            margin-top: 50px;
-        }
+       
         .card {
             max-width: 500px;
             margin: auto;
             padding: 20px;
-        }
-        .btn-save {
-            background-color: #28a745;
-            color: white;
-        }
-        .btn-save:hover {
-            background-color: #218838;
         }
     </style>
 </head>
@@ -32,8 +49,9 @@
 
     <!-- ✅ FORM MUST WRAP THE CONTENT PROPERLY -->
     <form id="AdminEditForm" runat="server">  
-
-        <div class="container">
+        <div class="sale-percent">
+        <div class="shop-banner">
+            <div class="container">
             <div class="card shadow">
                 <h3 class="text-center">Admin Profile</h3>
                 <hr>
@@ -64,9 +82,34 @@
 
                 <a href="admin.aspx" class="btn btn-secondary btn-block mt-2">Back to Dashboard</a>
             </div>
+                </div>
         </div>
-
+            </div>
     </form>  <!-- ✅ Closing form tag here -->
-
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+   <%-- Link to Bootstrap CSS --%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <%-- Link to your custom CSS if you have one --%>
+     <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" />
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="/assets/css/all.min.css" />
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="/assets/css/magnific-popup.css" />
+	<!-- animate css -->
+	<link rel="stylesheet" href="/assets/css/animate.css" />
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="/assets/css/meanmenu.min.css" />
+	<!-- main style -->
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!-- responsive -->
+	<link rel="stylesheet" href="/assets/css/responsive.css" />
 </body>
 </html>

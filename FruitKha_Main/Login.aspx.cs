@@ -31,6 +31,7 @@ namespace FruitKha_Main
             {
                 Session["UserLoggedIn"] = true;
                 Session["Uid"] = userID; // Store the Uid in the session
+                Session["UserName"] = username;
 
                 if (chkRememberMe.Checked)
                 {

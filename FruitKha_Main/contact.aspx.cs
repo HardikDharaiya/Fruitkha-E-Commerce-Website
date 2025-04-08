@@ -80,7 +80,8 @@ namespace FruitKha_Main
         }
         protected void Page_Load(object sender, EventArgs e)
         {                 
-            FillGrid();           
+            FillGrid();
+            UserNameTxt.Text = Session["UserName"].ToString();
         }
 
         protected void SaveBtn_Click(object sender, EventArgs e)

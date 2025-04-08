@@ -146,9 +146,7 @@
     <Content Include="assets\webfonts\fa-regular-400.svg" />
     <Content Include="assets\webfonts\fa-solid-900.svg" />
     <Content Include="cart.aspx" />
-    <Content Include="cart.html" />
     <Content Include="checkout.aspx" />
-    <Content Include="checkout.html" />
     <Content Include="contact.aspx" />
     <Content Include="help-documentation\css\et-line-font\et-line-font.css" />
     <Content Include="help-documentation\css\et-line-font\fonts\et-line.svg" />

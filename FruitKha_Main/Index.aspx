@@ -480,6 +480,8 @@
                                 <li>
                                     <div class="header-icons">
                                         <a class="shopping-cart" href="cart.aspx"><i class="fas fa-shopping-cart"></i></a><a id="profileLink" class="profile" href="Profile.aspx" runat="server"><i class="fas fa-user"></i></a>
+                                        <a class="shopping-cart" href="Profile.aspx">
+                                            <asp:Label ID="UserNameTxt" runat="server" Text="Label"></asp:Label></a>
                                     </div>
                                 </li>
                             </ul>

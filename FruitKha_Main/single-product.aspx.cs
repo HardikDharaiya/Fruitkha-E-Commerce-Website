@@ -39,7 +39,7 @@ namespace FruitKha_Main
 				DataList1.DataSource = ds;
 				DataList1.DataBind();
 			}
-
+			UserNameTxt.Text = Session["UserName"].ToString();
 
 		}
 
