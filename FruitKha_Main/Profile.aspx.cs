@@ -140,6 +140,7 @@ namespace FruitKha_Main
 			}
 		}
 
+		
 
 
 
@@ -211,6 +212,9 @@ namespace FruitKha_Main
 			}
 		}
 
-
+		protected void BackToHome2_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("Index.aspx");
+		}
 	}
 }

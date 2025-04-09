@@ -60,6 +60,15 @@ namespace FruitKha_Main
 		protected global::System.Web.UI.WebControls.Button btnLogout;
 
 		/// <summary>
+		/// BackToHome2 control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button BackToHome2;
+
+		/// <summary>
 		/// rptOrders control.
 		/// </summary>
 		/// <remarks>

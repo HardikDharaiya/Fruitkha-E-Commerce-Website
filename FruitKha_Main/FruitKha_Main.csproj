@@ -71,9 +71,12 @@
     <Content Include="about.aspx" />
     <Content Include="admin\admin.aspx" />
     <Content Include="admin\AdminInfo.aspx" />
+    <Content Include="admin\Item.aspx" />
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\Logout.aspx" />
+    <Content Include="admin\Order.aspx" />
     <Content Include="admin\Register.aspx" />
+    <Content Include="admin\Users.aspx" />
     <Content Include="App_Data\FruitKhaDatabase.mdf" />
     <Content Include="App_Data\FruitKhaDatabase_log.ldf">
       <DependentUpon>FruitKhaDatabase.mdf</DependentUpon>
@@ -211,6 +214,13 @@
     <Compile Include="admin\AdminInfo.aspx.designer.cs">
       <DependentUpon>AdminInfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Item.aspx.cs">
+      <DependentUpon>Item.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Item.aspx.designer.cs">
+      <DependentUpon>Item.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,12 +235,26 @@
     <Compile Include="admin\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
