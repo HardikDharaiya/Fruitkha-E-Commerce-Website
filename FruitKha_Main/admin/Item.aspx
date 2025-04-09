@@ -320,7 +320,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <p>Copyrights © <%= DateTime.Now.Year %> - <a href="#">YourCompanyName</a>, All Rights Reserved.</p>
+                        <p>Copyrights © <%= DateTime.Now.Year %> , All Rights Reserved.</p>
                     </div>
                     <div class="col-lg-6 text-right col-md-12">
                         <%-- Social Icons etc. --%>

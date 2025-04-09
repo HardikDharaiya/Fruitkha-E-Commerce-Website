@@ -594,5 +594,139 @@ namespace FruitKha_Main
         }
 
 
+
+
+
+        // Add these methods inside the Class1 class in Class1.cs
+
+        public DataTable GetAllOrders(string filterStatus = null, DateTime? filterStartDate = null, DateTime? filterEndDate = null)
+        {
+            using (SqlConnection con = GetConnection())
+            {
+                // Base query joining necessary tables
+                // Added ItemImage from ItemTbl and UserEmail from RegisterTbl
+                string query = @"SELECT
+                            o.OrderID, o.OrderDate, o.Quantity, o.TotalPrice, o.Status, o.ShippingAddressID,
+                            u.UserName, u.UserEmail,  -- Added UserEmail
+                            i.ItemName, i.ItemImage,  -- Added ItemImage
+                            sa.FullName as ShippingFullName -- Optional: Get shipping name directly
+                        FROM OrderTbl o
+                        INNER JOIN RegisterTbl u ON o.Uid = u.Uid
+                        INNER JOIN ItemTbl i ON o.ItemID = i.ItemID
+                        LEFT JOIN ShippingAddressTbl sa ON o.ShippingAddressID = sa.AddressID -- Left join in case address is missing
+                        WHERE 1=1"; // To easily append conditions
+
+                SqlCommand cmd = new SqlCommand();
+
+                // Apply Status Filter
+                if (!string.IsNullOrEmpty(filterStatus) && filterStatus != "All") // Assuming "All" means no filter
+                {
+                    query += " AND o.Status = @Status";
+                    cmd.Parameters.AddWithValue("@Status", filterStatus);
+                }
+
+                // Apply Date Filters
+                if (filterStartDate.HasValue)
+                {
+                    query += " AND o.OrderDate >= @StartDate";
+                    // Use .Date to compare only the date part, ignoring time
+                    cmd.Parameters.AddWithValue("@StartDate", filterStartDate.Value.Date);
+                }
+                if (filterEndDate.HasValue)
+                {
+                    query += " AND o.OrderDate < @EndDate";
+                    // Add one day to include the entire end date
+                    cmd.Parameters.AddWithValue("@EndDate", filterEndDate.Value.Date.AddDays(1));
+                }
+
+                query += " ORDER BY o.OrderDate DESC, o.OrderID DESC"; // Sort by most recent
+
+                cmd.CommandText = query;
+                cmd.Connection = con;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        public bool UpdateOrderStatus(int orderID, string newStatus)
+        {
+            using (SqlConnection con = GetConnection())
+            {
+                string query = "UPDATE OrderTbl SET Status = @NewStatus WHERE OrderID = @OrderID";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@NewStatus", newStatus);
+                    cmd.Parameters.AddWithValue("@OrderID", orderID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0; // Return true if update was successful
+                }
+            }
+        }
+
+        // We will reuse the existing GetShippingAddressString(int addressId) method
+        // public string GetShippingAddressString(int addressId) { ... } - Make sure it exists and is accessible
+
+
+        // Add these methods inside the Class1 class in Class1.cs
+
+        public DataTable GetAllUsers(string filterName = "", string filterEmail = "")
+        {
+            using (SqlConnection con = GetConnection())
+            {
+                // Select necessary columns - DO NOT select UserPassword
+                string query = "SELECT Uid, UserName, UserEmail FROM RegisterTbl WHERE 1=1"; // Base query
+
+                SqlCommand cmd = new SqlCommand(); // Create command object
+
+                // Apply filters using parameters to prevent SQL Injection
+                if (!string.IsNullOrEmpty(filterName))
+                {
+                    query += " AND UserName LIKE @FilterName";
+                    cmd.Parameters.AddWithValue("@FilterName", "%" + filterName + "%");
+                }
+                if (!string.IsNullOrEmpty(filterEmail))
+                {
+                    query += " AND UserEmail LIKE @FilterEmail";
+                    cmd.Parameters.AddWithValue("@FilterEmail", "%" + filterEmail + "%");
+                }
+
+                query += " ORDER BY UserName"; // Order alphabetically by username
+
+                cmd.CommandText = query;
+                cmd.Connection = con;
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        public bool DeleteUser(int uid)
+        {
+            // IMPORTANT: Recall that deleting a user will CASCADE deletes to OrderTbl and AddToCartTbl
+            // due to the foreign key constraints defined in the database schema.
+            using (SqlConnection con = GetConnection())
+            {
+                string query = "DELETE FROM RegisterTbl WHERE Uid = @Uid";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Uid", uid);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0; // Return true if deletion was successful
+                }
+            }
+        }
+
+
+
+
+
+
+
     }
 }
