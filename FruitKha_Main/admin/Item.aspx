@@ -6,7 +6,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="Admin Panel - Manage Items"/>
+    <meta name="description" content="Admin Panel - Manage Items by Hardik Dharaiya"/>
     <title>Admin - Manage Items</title>
 
     <!-- Favicon -->
@@ -320,7 +320,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
-                        <p>Copyrights © <%= DateTime.Now.Year %> , All Rights Reserved.</p>
+                        <p>Copyrights © <%= DateTime.Now.Year %> , All Rights Reserved By Hardik Dharaiya</p>
                     </div>
                     <div class="col-lg-6 text-right col-md-12">
                         <%-- Social Icons etc. --%>

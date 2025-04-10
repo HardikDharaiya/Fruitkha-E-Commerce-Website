@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Hardik Dharaiya">
 
 	<!-- title -->
 	<title>Cart</title>
@@ -294,9 +294,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-12">
-                    <p>
-                        Copyrights &copy; 2025
-                    </p>
+                  <p>Copyrights © <%= DateTime.Now.Year %> , All Rights Reserved By Hardik Dharaiya</p>
+
                 </div>
                 <div class="col-lg-6 text-right col-md-12">
                     <div class="social-icons">

@@ -72,12 +72,14 @@
 
               </div>
           <div class="row">
-    <div class="col-lg-12 text-center">
-        <div class="pagination-wrap" style="display: flex; justify-content: center; align-items: center;">
-            <ul style="list-style-type: none; display: flex; justify-content: space-between; width: 100%; max-width: 600px; padding: 0; margin: 0;">
-                <li><a><asp:Button ID="PrevBtn" runat="server" style="text-decoration: none;" Text="Prev" OnClick="PrevBtn_Click" /></a></li>
-                <li><a><asp:Button ID="NextBtn" runat="server" style="text-decoration: none;" Text="Next" OnClick="NextBtn_Click" /></a></li>
-            </ul>
+    <div class="col-lg-12">
+        <div class="pagination-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 0 15px;">
+            <a style="margin-right: auto; text-decoration: none;">
+                <asp:Button ID="PrevBtn" runat="server" Text="Prev" style="padding: 10px 20px;" OnClick="PrevBtn_Click" />
+            </a>
+            <a style="margin-left: auto; text-decoration: none;">
+                <asp:Button ID="NextBtn" runat="server" Text="Next" style="padding: 10px 20px;" OnClick="NextBtn_Click" />
+            </a>
         </div>
     </div>
 </div>
