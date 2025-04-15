@@ -56,8 +56,8 @@
         <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn-login" OnClick="btnLogin_Click" />
 
         <div class="extra-links">
-            <a href="register.aspx">Create an account</a> |
-            <a href="forgot-password.aspx">Forgot Password?</a>
+            <a href="register.aspx">Create an account</a> <%--|
+            <a href="forgot-password.aspx">Forgot Password?</a>--%>
         </div>
     </form>
 </div>

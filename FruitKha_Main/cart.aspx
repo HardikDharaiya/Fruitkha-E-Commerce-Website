@@ -216,7 +216,7 @@
 						<!-- menu start -->
 						<nav class="main-menu">
                             <ul>
-                                <li class="current-list-item"><a href="index.aspx">Home</a></li>
+                                <li><a href="index.aspx">Home</a></li>
                                 <li><a href="about.aspx">About</a></li>
                                 <li><a href="contact.aspx">Contact</a></li>
                                 <li><a href="shop.aspx">Shop</a> </li>

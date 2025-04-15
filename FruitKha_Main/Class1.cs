@@ -724,7 +724,33 @@ namespace FruitKha_Main
 
 
 
+        // Add this new method inside the Class1 class in Class1.cs
 
+        /// <summary>
+        /// Gets a specified number of random items from the ItemTbl.
+        /// </summary>
+        /// <param name="count">The number of random items to retrieve.</param>
+        /// <returns>A DataTable containing the random items.</returns>
+        public DataTable GetRandomItems(int count)
+        {
+            using (SqlConnection con = GetConnection())
+            {
+                // SQL Server specific way to get random rows using NEWID()
+                // Ensure you select all columns needed by the Repeater template
+                string query = $"SELECT TOP (@Count) ItemID, ItemName, ItemMeasurement, ItemPrice, ItemImage FROM ItemTbl ORDER BY NEWID()";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    // Use parameter to specify the count securely
+                    cmd.Parameters.AddWithValue("@Count", count);
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
 
 
 

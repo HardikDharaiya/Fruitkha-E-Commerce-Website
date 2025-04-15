@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes"?>
+<InvoiceData>
+  <xs:schema id="InvoiceData" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="InvoiceData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="OrderDetails">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="OrderID" type="xs:int" minOccurs="0" />
+                <xs:element name="OrderDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Quantity" type="xs:int" minOccurs="0" />
+                <xs:element name="LineTotal" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Status" type="xs:string" minOccurs="0" />
+                <xs:element name="ItemName" type="xs:string" minOccurs="0" />
+                <xs:element name="ItemMeasurement" type="xs:string" minOccurs="0" />
+                <xs:element name="ItemPrice" type="xs:decimal" minOccurs="0" />
+                <xs:element name="UserName" type="xs:string" minOccurs="0" />
+                <xs:element name="UserEmail" type="xs:string" minOccurs="0" />
+                <xs:element name="FullName" type="xs:string" minOccurs="0" />
+                <xs:element name="ShippingEmail" type="xs:string" minOccurs="0" />
+                <xs:element name="AddressLine1" type="xs:string" minOccurs="0" />
+                <xs:element name="AddressLine2" type="xs:string" minOccurs="0" />
+                <xs:element name="City" type="xs:string" minOccurs="0" />
+                <xs:element name="State" type="xs:string" minOccurs="0" />
+                <xs:element name="PostalCode" type="xs:string" minOccurs="0" />
+                <xs:element name="Country" type="xs:string" minOccurs="0" />
+                <xs:element name="PhoneNumber" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <OrderDetails>
+    <OrderID>24</OrderID>
+    <OrderDate>2025-04-14T20:37:37.42+05:30</OrderDate>
+    <Quantity>1</Quantity>
+    <LineTotal>300.00</LineTotal>
+    <Status>Pending</Status>
+    <ItemName>Strawberry</ItemName>
+    <ItemMeasurement>Dozen</ItemMeasurement>
+    <ItemPrice>300</ItemPrice>
+    <UserName>Hardik</UserName>
+    <UserEmail>hdharaiya@rku.ac.in</UserEmail>
+    <FullName>Hardik</FullName>
+    <ShippingEmail>hdharaiya@rku.ac.in</ShippingEmail>
+    <AddressLine1>silf</AddressLine1>
+    <AddressLine2>-</AddressLine2>
+    <City>aasdfhkl</City>
+    <State>kjhdsa</State>
+    <PostalCode>464246</PostalCode>
+    <Country>dfhcv</Country>
+    <PhoneNumber>8529637410</PhoneNumber>
+  </OrderDetails>
+</InvoiceData>

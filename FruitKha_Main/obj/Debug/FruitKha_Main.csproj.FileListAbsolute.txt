@@ -352,3 +352,19 @@ C:\SEM 6\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\obj\Debug\FruitKha_Main.c
 C:\SEM 6\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\obj\Debug\FruitKha_Main.csproj.CopyComplete
 C:\SEM 6\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\obj\Debug\FruitKha_Main.dll
 C:\SEM 6\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\obj\Debug\FruitKha_Main.pdb
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.CrystalReports.Engine.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportSource.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.Shared.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+G:\HARDIK_ASP.NET\3T_FruitKha_Main\FruitKha_Main\bin\stdole.dll
